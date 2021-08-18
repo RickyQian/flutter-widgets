@@ -158,27 +158,27 @@ class MapShapeSource extends DiagnosticableTree {
   /// }
   /// ```
   const MapShapeSource.asset(
-    String name, {
-    this.shapeDataField,
-    this.dataCount = 0,
-    this.primaryValueMapper,
-    this.shapeColorMappers,
-    this.bubbleColorMappers,
-    this.dataLabelMapper,
-    this.bubbleSizeMapper,
-    this.shapeColorValueMapper,
-    this.bubbleColorValueMapper,
-  })  : _path = name,
+      String name, {
+        this.shapeDataField,
+        this.dataCount = 0,
+        this.primaryValueMapper,
+        this.shapeColorMappers,
+        this.bubbleColorMappers,
+        this.dataLabelMapper,
+        this.bubbleSizeMapper,
+        this.shapeColorValueMapper,
+        this.bubbleColorValueMapper,
+      })  : _path = name,
         _type = GeoJSONSourceType.asset,
         assert((primaryValueMapper != null && dataCount > 0) ||
             primaryValueMapper == null),
         assert((shapeColorMappers != null &&
-                primaryValueMapper != null &&
-                shapeColorValueMapper != null) ||
+            primaryValueMapper != null &&
+            shapeColorValueMapper != null) ||
             shapeColorMappers == null),
         assert((bubbleColorMappers != null &&
-                primaryValueMapper != null &&
-                bubbleColorValueMapper != null) ||
+            primaryValueMapper != null &&
+            bubbleColorValueMapper != null) ||
             bubbleColorMappers == null);
 
   /// Creates a layer using the .json file from the network.
@@ -212,27 +212,27 @@ class MapShapeSource extends DiagnosticableTree {
   /// }
   /// ```
   const MapShapeSource.network(
-    String src, {
-    this.shapeDataField,
-    this.dataCount = 0,
-    this.primaryValueMapper,
-    this.shapeColorMappers,
-    this.bubbleColorMappers,
-    this.dataLabelMapper,
-    this.bubbleSizeMapper,
-    this.shapeColorValueMapper,
-    this.bubbleColorValueMapper,
-  })  : _path = src,
+      String src, {
+        this.shapeDataField,
+        this.dataCount = 0,
+        this.primaryValueMapper,
+        this.shapeColorMappers,
+        this.bubbleColorMappers,
+        this.dataLabelMapper,
+        this.bubbleSizeMapper,
+        this.shapeColorValueMapper,
+        this.bubbleColorValueMapper,
+      })  : _path = src,
         _type = GeoJSONSourceType.network,
         assert((primaryValueMapper != null && dataCount > 0) ||
             primaryValueMapper == null),
         assert((shapeColorMappers != null &&
-                primaryValueMapper != null &&
-                shapeColorValueMapper != null) ||
+            primaryValueMapper != null &&
+            shapeColorValueMapper != null) ||
             shapeColorMappers == null),
         assert((bubbleColorMappers != null &&
-                primaryValueMapper != null &&
-                bubbleColorValueMapper != null) ||
+            primaryValueMapper != null &&
+            bubbleColorValueMapper != null) ||
             bubbleColorMappers == null);
 
   /// Creates a layer using the GeoJSON source as bytes from [Uint8List].
@@ -268,27 +268,27 @@ class MapShapeSource extends DiagnosticableTree {
   /// }
   /// ```
   const MapShapeSource.memory(
-    Uint8List bytes, {
-    this.shapeDataField,
-    this.dataCount = 0,
-    this.primaryValueMapper,
-    this.shapeColorMappers,
-    this.bubbleColorMappers,
-    this.dataLabelMapper,
-    this.bubbleSizeMapper,
-    this.shapeColorValueMapper,
-    this.bubbleColorValueMapper,
-  })  : _path = bytes,
+      Uint8List bytes, {
+        this.shapeDataField,
+        this.dataCount = 0,
+        this.primaryValueMapper,
+        this.shapeColorMappers,
+        this.bubbleColorMappers,
+        this.dataLabelMapper,
+        this.bubbleSizeMapper,
+        this.shapeColorValueMapper,
+        this.bubbleColorValueMapper,
+      })  : _path = bytes,
         _type = GeoJSONSourceType.memory,
         assert((primaryValueMapper != null && dataCount > 0) ||
             primaryValueMapper == null),
         assert((shapeColorMappers != null &&
-                primaryValueMapper != null &&
-                shapeColorValueMapper != null) ||
+            primaryValueMapper != null &&
+            shapeColorValueMapper != null) ||
             shapeColorMappers == null),
         assert((bubbleColorMappers != null &&
-                primaryValueMapper != null &&
-                bubbleColorValueMapper != null) ||
+            primaryValueMapper != null &&
+            bubbleColorValueMapper != null) ||
             bubbleColorMappers == null);
 
   /// Field name in the .json file to identify each shape.
@@ -859,9 +859,9 @@ class MapShapeSource extends DiagnosticableTree {
 class _ShapeBounds {
   _ShapeBounds(
       {this.minLongitude,
-      this.minLatitude,
-      this.maxLongitude,
-      this.maxLatitude});
+        this.minLatitude,
+        this.maxLongitude,
+        this.maxLatitude});
 
   num? minLongitude;
 
@@ -933,17 +933,17 @@ void _readJsonFile(Map<String, dynamic> data) {
   // ignore: avoid_as
   final bool isSublayer = data['IsSublayer'] as bool;
   final bool hasFeatures =
-      shapeFileData.decodedJsonData!.containsKey('features');
+  shapeFileData.decodedJsonData!.containsKey('features');
   final bool hasGeometries =
-      shapeFileData.decodedJsonData!.containsKey('geometries');
+  shapeFileData.decodedJsonData!.containsKey('geometries');
   final String? key = hasFeatures
       ? 'features'
       : hasGeometries
-          ? 'geometries'
-          : null;
+      ? 'geometries'
+      : null;
   final int jsonLength = key == null || key.isEmpty
       ? 0
-      // ignore: avoid_as
+  // ignore: avoid_as
       : shapeFileData.decodedJsonData![key].length as int;
   if (isSublayer) {
     shapeFileData.bounds = _ShapeBounds(
@@ -986,11 +986,11 @@ void _readJsonFile(Map<String, dynamic> data) {
 void _updateMapDataSource(_ShapeFileData shapeFileData, String? shapeDataField,
     Map<String, dynamic>? properties, List<dynamic> points, bool isSublayer) {
   final String dataPath =
-      // ignore: avoid_as
-      (properties != null ? (properties[shapeDataField] ?? '') : '') as String;
+  // ignore: avoid_as
+  (properties != null ? (properties[shapeDataField] ?? '') : '') as String;
   shapeFileData.mapDataSource.update(
     dataPath,
-    (MapModel model) {
+        (MapModel model) {
       model.rawPoints.add(points);
       return model;
     },
@@ -1242,83 +1242,83 @@ class _GeoJSONLayerState extends State<GeoJSONLayer>
   }
 
   Widget get _shapeLayerRenderObjectWidget => _GeoJSONLayerRenderObjectWidget(
-        controller: _controller!,
-        mapDataSource: shapeFileData.mapDataSource,
-        mapSource: widget.source,
-        selectedIndex: widget.selectedIndex,
-        legend: widget.legend,
-        selectionSettings: widget.selectionSettings,
-        zoomPanBehavior: widget.zoomPanBehavior,
-        bubbleSettings: widget.bubbleSettings.copyWith(
-            color: _mapsThemeData.bubbleColor,
-            strokeColor: _mapsThemeData.bubbleStrokeColor,
-            strokeWidth: _mapsThemeData.bubbleStrokeWidth),
-        themeData: _mapsThemeData,
-        state: this,
-        children: _geoJSONLayerChildren,
-      );
+    controller: _controller!,
+    mapDataSource: shapeFileData.mapDataSource,
+    mapSource: widget.source,
+    selectedIndex: widget.selectedIndex,
+    legend: widget.legend,
+    selectionSettings: widget.selectionSettings,
+    zoomPanBehavior: widget.zoomPanBehavior,
+    bubbleSettings: widget.bubbleSettings.copyWith(
+        color: _mapsThemeData.bubbleColor,
+        strokeColor: _mapsThemeData.bubbleStrokeColor,
+        strokeWidth: _mapsThemeData.bubbleStrokeWidth),
+    themeData: _mapsThemeData,
+    state: this,
+    children: _geoJSONLayerChildren,
+  );
 
   Widget get _bubbleWidget => MapBubble(
-        key: bubbleKey,
-        controller: _controller,
-        source: widget.source,
-        mapDataSource: shapeFileData.mapDataSource,
-        bubbleSettings: widget.bubbleSettings.copyWith(
-            color: _mapsThemeData.bubbleColor,
-            strokeColor: _mapsThemeData.bubbleStrokeColor,
-            strokeWidth: _mapsThemeData.bubbleStrokeWidth),
-        legend: widget.legend,
-        showDataLabels: widget.showDataLabels,
-        themeData: _mapsThemeData,
-        bubbleAnimationController: bubbleAnimationController,
-        dataLabelAnimationController: dataLabelAnimationController,
-        toggleAnimationController: toggleAnimationController,
-        hoverBubbleAnimationController: _hoverBubbleAnimationController,
-      );
+    key: bubbleKey,
+    controller: _controller,
+    source: widget.source,
+    mapDataSource: shapeFileData.mapDataSource,
+    bubbleSettings: widget.bubbleSettings.copyWith(
+        color: _mapsThemeData.bubbleColor,
+        strokeColor: _mapsThemeData.bubbleStrokeColor,
+        strokeWidth: _mapsThemeData.bubbleStrokeWidth),
+    legend: widget.legend,
+    showDataLabels: widget.showDataLabels,
+    themeData: _mapsThemeData,
+    bubbleAnimationController: bubbleAnimationController,
+    dataLabelAnimationController: dataLabelAnimationController,
+    toggleAnimationController: toggleAnimationController,
+    hoverBubbleAnimationController: _hoverBubbleAnimationController,
+  );
 
   Widget get _dataLabelWidget => MapDataLabel(
-        controller: _controller,
-        source: widget.source,
-        mapDataSource: shapeFileData.mapDataSource,
-        settings: widget.dataLabelSettings,
-        effectiveTextStyle: Theme.of(context).textTheme.caption!.merge(
-            widget.dataLabelSettings.textStyle ??
-                _mapsThemeData.dataLabelTextStyle),
-        themeData: _mapsThemeData,
-        dataLabelAnimationController: dataLabelAnimationController,
-      );
+    controller: _controller,
+    source: widget.source,
+    mapDataSource: shapeFileData.mapDataSource,
+    settings: widget.dataLabelSettings,
+    effectiveTextStyle: Theme.of(context).textTheme.caption!.merge(
+        widget.dataLabelSettings.textStyle ??
+            _mapsThemeData.dataLabelTextStyle),
+    themeData: _mapsThemeData,
+    dataLabelAnimationController: dataLabelAnimationController,
+  );
 
   Widget get _sublayerContainer =>
       SublayerContainer(ancestor: ancestor, children: widget.sublayers!);
 
   Widget get _markerContainer => MarkerContainer(
-        controller: _controller!,
-        markerTooltipBuilder: widget.markerTooltipBuilder,
-        sublayer: widget.sublayerAncestor,
-        ancestor: ancestor,
-        children: _markers,
-      );
+    controller: _controller!,
+    markerTooltipBuilder: widget.markerTooltipBuilder,
+    sublayer: widget.sublayerAncestor,
+    ancestor: ancestor,
+    children: _markers,
+  );
 
   Widget get _behaviorViewRenderObjectWidget => BehaviorViewRenderObjectWidget(
       controller: _controller!, zoomPanBehavior: widget.zoomPanBehavior!);
 
   Widget get _toolbarWidget => MapToolbar(
-        controller: _controller,
-        onWillZoom: widget.onWillZoom,
-        zoomPanBehavior: widget.zoomPanBehavior!,
-      );
+    controller: _controller,
+    onWillZoom: widget.onWillZoom,
+    zoomPanBehavior: widget.zoomPanBehavior!,
+  );
 
   Widget get _tooltipWidget => MapTooltip(
-        key: _controller!.tooltipKey,
-        controller: _controller,
-        mapSource: widget.source,
-        sublayers: widget.sublayers,
-        tooltipSettings: widget.tooltipSettings,
-        shapeTooltipBuilder: widget.shapeTooltipBuilder,
-        bubbleTooltipBuilder: widget.bubbleTooltipBuilder,
-        markerTooltipBuilder: widget.markerTooltipBuilder,
-        themeData: _mapsThemeData,
-      );
+    key: _controller!.tooltipKey,
+    controller: _controller,
+    mapSource: widget.source,
+    sublayers: widget.sublayers,
+    tooltipSettings: widget.tooltipSettings,
+    shapeTooltipBuilder: widget.shapeTooltipBuilder,
+    bubbleTooltipBuilder: widget.bubbleTooltipBuilder,
+    markerTooltipBuilder: widget.markerTooltipBuilder,
+    themeData: _mapsThemeData,
+  );
 
   Widget get _shapeLayerWithElements {
     final List<Widget> children = <Widget>[];
@@ -1386,9 +1386,9 @@ class _GeoJSONLayerState extends State<GeoJSONLayer>
       while (iterator.moveNext()) {
         final MapSublayer sublayer = iterator.current;
         if ((sublayer is MapShapeSublayer &&
-                (sublayer.shapeTooltipBuilder != null ||
-                    sublayer.bubbleTooltipBuilder != null ||
-                    sublayer.markerTooltipBuilder != null)) ||
+            (sublayer.shapeTooltipBuilder != null ||
+                sublayer.bubbleTooltipBuilder != null ||
+                sublayer.markerTooltipBuilder != null)) ||
             (sublayer is MapVectorLayer && sublayer.tooltipBuilder != null)) {
           return true;
         }
@@ -1403,14 +1403,14 @@ class _GeoJSONLayerState extends State<GeoJSONLayer>
       layerColor: widget.color ??
           (isSublayer
               ? (isLightTheme
-                  ? const Color.fromRGBO(198, 198, 198, 1)
-                  : const Color.fromRGBO(71, 71, 71, 1))
+              ? const Color.fromRGBO(198, 198, 198, 1)
+              : const Color.fromRGBO(71, 71, 71, 1))
               : _mapsThemeData.layerColor),
       layerStrokeColor: widget.strokeColor ??
           (isSublayer
               ? (isLightTheme
-                  ? const Color.fromRGBO(145, 145, 145, 1)
-                  : const Color.fromRGBO(133, 133, 133, 1))
+              ? const Color.fromRGBO(145, 145, 145, 1)
+              : const Color.fromRGBO(133, 133, 133, 1))
               : _mapsThemeData.layerStrokeColor),
       layerStrokeWidth: widget.strokeWidth ??
           (isSublayer
@@ -1420,17 +1420,17 @@ class _GeoJSONLayerState extends State<GeoJSONLayer>
           _mapsThemeData.layerStrokeWidth,
       legendTextStyle: themeData.textTheme.caption!
           .copyWith(
-              color: themeData.textTheme.caption!.color!.withOpacity(0.87))
+          color: themeData.textTheme.caption!.color!.withOpacity(0.87))
           .merge(widget.legend?.textStyle ?? _mapsThemeData.legendTextStyle),
       bubbleColor: widget.bubbleSettings.color ?? _mapsThemeData.bubbleColor,
       bubbleStrokeColor:
-          widget.bubbleSettings.strokeColor ?? _mapsThemeData.bubbleStrokeColor,
+      widget.bubbleSettings.strokeColor ?? _mapsThemeData.bubbleStrokeColor,
       bubbleStrokeWidth:
-          widget.bubbleSettings.strokeWidth ?? _mapsThemeData.bubbleStrokeWidth,
+      widget.bubbleSettings.strokeWidth ?? _mapsThemeData.bubbleStrokeWidth,
       bubbleHoverStrokeWidth: _mapsThemeData.bubbleHoverStrokeWidth ??
           _mapsThemeData.bubbleStrokeWidth,
       selectionColor:
-          widget.selectionSettings.color ?? _mapsThemeData.selectionColor,
+      widget.selectionSettings.color ?? _mapsThemeData.selectionColor,
       selectionStrokeColor: widget.selectionSettings.strokeColor ??
           _mapsThemeData.selectionStrokeColor,
       selectionStrokeWidth: widget.selectionSettings.strokeWidth ??
@@ -1443,7 +1443,7 @@ class _GeoJSONLayerState extends State<GeoJSONLayer>
       tooltipBorderRadius: _mapsThemeData.tooltipBorderRadius
           .resolve(Directionality.of(context)),
       toggledItemColor:
-          widget.legend?.toggledItemColor ?? _mapsThemeData.toggledItemColor,
+      widget.legend?.toggledItemColor ?? _mapsThemeData.toggledItemColor,
       toggledItemStrokeColor: widget.legend?.toggledItemStrokeColor ??
           _mapsThemeData.toggledItemStrokeColor,
       toggledItemStrokeWidth: widget.legend?.toggledItemStrokeWidth ??
@@ -1504,7 +1504,7 @@ class _GeoJSONLayerState extends State<GeoJSONLayer>
 
       for (int i = 0; i < widget.source.dataCount; i++) {
         final MapModel? mapModel =
-            shapeFileData.mapDataSource[widget.source.primaryValueMapper!(i)];
+        shapeFileData.mapDataSource[widget.source.primaryValueMapper!(i)];
         if (mapModel != null) {
           mapModel.dataIndex = i;
           _updateShapeColor(hasShapeColorValueMapper, i, mapModel);
@@ -1735,7 +1735,7 @@ class _GeoJSONLayerState extends State<GeoJSONLayer>
     isSublayer = widget.sublayerAncestor != null;
 
     final MapProvider currentProvider =
-        getSourceProvider(widget.source._path, widget.source._type);
+    getSourceProvider(widget.source._path, widget.source._type);
     if (_provider != currentProvider) {
       _provider = currentProvider;
       _isShapeFileDecoded = false;
@@ -1744,8 +1744,8 @@ class _GeoJSONLayerState extends State<GeoJSONLayer>
 
     if (oldWidget.controller != widget.controller) {
       widget.controller!._parentBox =
-          // ignore: avoid_as
-          context.findRenderObject()! as _RenderGeoJSONLayer;
+      // ignore: avoid_as
+      context.findRenderObject()! as _RenderGeoJSONLayer;
     }
 
     if (_controller != null && _shouldUpdateMapDataSource && !isSublayer) {
@@ -1890,6 +1890,11 @@ class _RenderGeoJSONLayer extends RenderStack
       ..onUpdate = _handleScaleUpdate
       ..onEnd = _handleScaleEnd;
 
+    _verticalGestureRecognizer = VerticalDragGestureRecognizer()
+      ..onStart = _handleVerticalDragStart
+      ..onUpdate = _handleVerticalDragUpdate
+      ..onEnd = _handleVerticalDragEnd;
+
     _tapGestureRecognizer = TapGestureRecognizer()..onTapUp = _handleTapUp;
 
     if (!_state.isSublayer) {
@@ -1947,10 +1952,12 @@ class _RenderGeoJSONLayer extends RenderStack
   bool _avoidPanUpdate = false;
   bool _isFlingAnimationActive = false;
   bool _doubleTapEnabled = false;
+  bool _isAnimationOnQueue = false;
   late bool _validForMouseTracker;
   late Size _size;
   late Size _actualShapeSize;
   late ScaleGestureRecognizer _scaleGestureRecognizer;
+  late VerticalDragGestureRecognizer _verticalGestureRecognizer;
   late TapGestureRecognizer _tapGestureRecognizer;
   late Animation<double> _selectionColorAnimation;
   late Animation<double> _toggleShapeAnimation;
@@ -1993,25 +2000,25 @@ class _RenderGeoJSONLayer extends RenderStack
 
   bool get canZoom =>
       _zoomPanBehavior != null &&
-      (_zoomPanBehavior!.enablePinching ||
-          _zoomPanBehavior!.enablePanning ||
-          _zoomPanBehavior!.enableDoubleTapZooming);
+          (_zoomPanBehavior!.enablePinching ||
+              _zoomPanBehavior!.enablePanning ||
+              _zoomPanBehavior!.enableDoubleTapZooming);
 
   bool get isInteractive =>
       _state.widget.shapeTooltipBuilder != null ||
-      _state.widget.bubbleTooltipBuilder != null ||
-      _state.widget.onSelectionChanged != null ||
-      (_state.isDesktop && (hasBubbleHoverColor || hasShapeHoverColor));
+          _state.widget.bubbleTooltipBuilder != null ||
+          _state.widget.onSelectionChanged != null ||
+          (_state.isDesktop && (hasBubbleHoverColor || hasShapeHoverColor));
 
   bool get hasBubbleHoverColor =>
       _themeData.bubbleHoverColor != Colors.transparent ||
-      (_themeData.bubbleHoverStrokeColor != Colors.transparent &&
-          _themeData.bubbleHoverStrokeWidth! > 0);
+          (_themeData.bubbleHoverStrokeColor != Colors.transparent &&
+              _themeData.bubbleHoverStrokeWidth! > 0);
 
   bool get hasShapeHoverColor =>
       _themeData.shapeHoverColor != Colors.transparent ||
-      (_themeData.shapeHoverStrokeColor != Colors.transparent &&
-          _themeData.shapeHoverStrokeWidth! > 0);
+          (_themeData.shapeHoverStrokeColor != Colors.transparent &&
+              _themeData.shapeHoverStrokeWidth! > 0);
 
   Map<String, MapModel> get mapDataSource => _mapDataSource;
   Map<String, MapModel> _mapDataSource;
@@ -2241,22 +2248,22 @@ class _RenderGeoJSONLayer extends RenderStack
 
   void _initializeToggledShapeTweenColors() {
     final Color? toggledShapeColor =
-        _themeData.toggledItemColor != Colors.transparent
-            ? _themeData.toggledItemColor
-            : null;
+    _themeData.toggledItemColor != Colors.transparent
+        ? _themeData.toggledItemColor
+        : null;
 
     _forwardToggledShapeColorTween.end = toggledShapeColor;
     _forwardToggledShapeStrokeColorTween.begin = _themeData.layerStrokeColor;
     _forwardToggledShapeStrokeColorTween.end =
-        _themeData.toggledItemStrokeColor != Colors.transparent
-            ? _themeData.toggledItemStrokeColor
-            : null;
+    _themeData.toggledItemStrokeColor != Colors.transparent
+        ? _themeData.toggledItemStrokeColor
+        : null;
 
     _reverseToggledShapeColorTween.begin = toggledShapeColor;
     _reverseToggledShapeStrokeColorTween.begin =
-        _themeData.toggledItemStrokeColor != Colors.transparent
-            ? _themeData.toggledItemStrokeColor
-            : null;
+    _themeData.toggledItemStrokeColor != Colors.transparent
+        ? _themeData.toggledItemStrokeColor
+        : null;
     _reverseToggledShapeStrokeColorTween.end = _themeData.layerStrokeColor;
   }
 
@@ -2265,10 +2272,10 @@ class _RenderGeoJSONLayer extends RenderStack
         double.parse(getActualShapeColor(model).opacity.toStringAsFixed(2)) !=
             hoverColorOpacity;
     return _themeData.shapeHoverColor != null &&
-            _themeData.shapeHoverColor != Colors.transparent
+        _themeData.shapeHoverColor != Colors.transparent
         ? _themeData.shapeHoverColor!
         : getActualShapeColor(model).withOpacity(
-            canAdjustHoverOpacity ? hoverColorOpacity : minHoverOpacity);
+        canAdjustHoverOpacity ? hoverColorOpacity : minHoverOpacity);
   }
 
   Color _getHoverStrokeColor() {
@@ -2276,10 +2283,10 @@ class _RenderGeoJSONLayer extends RenderStack
         double.parse(_themeData.layerStrokeColor.opacity.toStringAsFixed(2)) !=
             hoverColorOpacity;
     return _themeData.shapeHoverStrokeColor != null &&
-            _themeData.shapeHoverStrokeColor != Colors.transparent
+        _themeData.shapeHoverStrokeColor != Colors.transparent
         ? _themeData.shapeHoverStrokeColor!
         : _themeData.layerStrokeColor.withOpacity(
-            canAdjustHoverOpacity ? hoverColorOpacity : minHoverOpacity);
+        canAdjustHoverOpacity ? hoverColorOpacity : minHoverOpacity);
   }
 
   void _refresh([MapLatLng? latlng]) {
@@ -2346,9 +2353,9 @@ class _RenderGeoJSONLayer extends RenderStack
     // greater than or equal to lowerLimit. This shows assert error when using.
     // So, we have used the min and max mathematical function for clamping.
     final double dx =
-        min(max(0.0, _size.width - _actualShapeSize.width), -bounds.left);
+    min(max(0.0, _size.width - _actualShapeSize.width), -bounds.left);
     final double dy =
-        min(max(0.0, _size.height - _actualShapeSize.height), -bounds.top);
+    min(max(0.0, _size.height - _actualShapeSize.height), -bounds.top);
     final Size widgetSize = _state.isSublayer ? size : _size;
     final Offset shift = Offset(
         widgetSize.width - _actualShapeSize.width * factor,
@@ -2400,13 +2407,13 @@ class _RenderGeoJSONLayer extends RenderStack
       double signedArea = 0.0, centerX = 0.0, centerY = 0.0;
       rawPointsLength = mapModel.rawPoints.length;
       mapModel.pixelPoints =
-          List<List<Offset>>.filled(rawPointsLength, <Offset>[]);
+      List<List<Offset>>.filled(rawPointsLength, <Offset>[]);
       shapePath = Path();
       for (int j = 0; j < rawPointsLength; j++) {
         rawPoints = mapModel.rawPoints[j];
         pointsLength = rawPoints.length;
         pixelPoints = mapModel.pixelPoints![j] =
-            List<Offset>.filled(pointsLength, Offset.zero);
+        List<Offset>.filled(pointsLength, Offset.zero);
         for (int k = 0; k < pointsLength; k++) {
           coordinate = rawPoints[k];
           point = pixelPoints[k] = pixelFromLatLng(
@@ -2421,7 +2428,7 @@ class _RenderGeoJSONLayer extends RenderStack
             shapePath.lineTo(point.dx, point.dy);
             final int l = k - 1;
             if ((_state.widget.showDataLabels ||
-                    _state.widget.source.bubbleSizeMapper != null) &&
+                _state.widget.source.bubbleSizeMapper != null) &&
                 l + 1 < pixelPoints.length) {
               // Used mathematical formula to find
               // the center of polygon points.
@@ -2499,7 +2506,7 @@ class _RenderGeoJSONLayer extends RenderStack
         mapModel.bubbleRadius = _bubbleSettings.maxRadius;
       } else {
         final double percentage = ((bubbleSizeValue - _state.minBubbleValue!) /
-                (_state.maxBubbleValue! - _state.minBubbleValue!)) *
+            (_state.maxBubbleValue! - _state.minBubbleValue!)) *
             100;
         mapModel.bubbleRadius = bubbleSettings.minRadius +
             (bubbleSettings.maxRadius - bubbleSettings.minRadius) *
@@ -2541,6 +2548,20 @@ class _RenderGeoJSONLayer extends RenderStack
       _controller.isInInteractive = true;
       _controller.gesture = null;
       _startInteraction(details.localFocalPoint, details.focalPoint);
+    }
+  }
+
+  void _handleVerticalDragStart(DragStartDetails details) {
+    if (canZoom &&
+        !_state.zoomLevelAnimationController.isAnimating &&
+        !_state.focalLatLngAnimationController.isAnimating) {
+      if (_controller.gesture == Gesture.scale) {
+        _zoomEnd();
+      }
+
+      _controller.isInInteractive = true;
+      _controller.gesture = null;
+      _startInteraction(details.localPosition, details.globalPosition);
     }
   }
 
@@ -2615,6 +2636,35 @@ class _RenderGeoJSONLayer extends RenderStack
     }
   }
 
+  void _handleVerticalDragUpdate(DragUpdateDetails details) {
+    if (canZoom &&
+        !_doubleTapEnabled &&
+        !_state.zoomLevelAnimationController.isAnimating &&
+        !_state.focalLatLngAnimationController.isAnimating) {
+      _controller.isInInteractive = true;
+      // Before the completion of the double tap zooming animation, when we
+      // zoomed or panned the _downLocalPoint will be null. So we had updated
+      // the current offset as interaction start offsets.
+      if (_downLocalPoint == null) {
+        _startInteraction(details.localPosition, details.globalPosition);
+      }
+
+      _controller.gesture ??= Gesture.pan;
+      if (_controller.gesture == null) {
+        return;
+      }
+
+      _resetDoubleTapTimer();
+
+      if (_zoomPanBehavior!.enablePanning &&
+          !_state.focalLatLngAnimationController.isAnimating &&
+          !_state.zoomLevelAnimationController.isAnimating) {
+        _invokeOnPanning(
+            details.localPosition, _downLocalPoint!, details.globalPosition);
+      }
+    }
+  }
+
   void _handleScaleEnd(ScaleEndDetails details) {
     if (_controller.gesture == null) {
       _controller.isInInteractive = false;
@@ -2635,6 +2685,41 @@ class _RenderGeoJSONLayer extends RenderStack
       else if (_controller.gesture == Gesture.scale &&
           _zoomPanBehavior!.enablePinching) {
         _startFlingAnimationForPinching(details);
+      }
+    } else {
+      switch (_controller.gesture!) {
+        case Gesture.scale:
+          _zoomEnd();
+          break;
+        case Gesture.pan:
+          _panEnd();
+          break;
+      }
+
+      _controller.gesture = null;
+    }
+  }
+
+  void _handleVerticalDragEnd(DragEndDetails details) {
+    if (_controller.gesture == null) {
+      _controller.isInInteractive = false;
+      return;
+    } else if (_state.zoomLevelAnimationController.isAnimating ||
+        _state.focalLatLngAnimationController.isAnimating) {
+      return;
+    }
+    if (_zoomPanBehavior != null &&
+        details.velocity.pixelsPerSecond.distance >= kMinFlingVelocity) {
+      _resetDoubleTapTimer();
+      // Calculating the end focalLatLng based on the obtained velocity.
+      if (_controller.gesture == Gesture.pan &&
+          _zoomPanBehavior!.enablePanning) {
+        _startFlingAnimationForVerticalPanning(details);
+      }
+      // Calculating the end zoomLevel based on the obtained velocity.
+      else if (_controller.gesture == Gesture.scale &&
+          _zoomPanBehavior!.enablePinching) {
+        _startFlingAnimationForVerticalPanning(details);
       }
     } else {
       switch (_controller.gesture!) {
@@ -2682,10 +2767,42 @@ class _RenderGeoJSONLayer extends RenderStack
     _zoomPanBehavior!.focalLatLng = latLng;
   }
 
+  void _startFlingAnimationForVerticalPanning(DragEndDetails details) {
+    _isFlingAnimationActive = true;
+    final Offset currentPixelPoint = pixelFromLatLng(
+        _controller.visibleFocalLatLng!.latitude,
+        _controller.visibleFocalLatLng!.longitude,
+        _size,
+        _controller.shapeLayerOffset,
+        _controller.shapeLayerSizeFactor);
+    final FrictionSimulation frictionX = FrictionSimulation(
+      _frictionCoefficient,
+      currentPixelPoint.dx,
+      -details.velocity.pixelsPerSecond.dx,
+    );
+
+    final FrictionSimulation frictionY = FrictionSimulation(
+      _frictionCoefficient,
+      currentPixelPoint.dy,
+      -details.velocity.pixelsPerSecond.dy,
+    );
+
+    final MapLatLng latLng = getPixelToLatLng(
+        Offset(frictionX.finalX, frictionY.finalX),
+        _size,
+        _controller.shapeLayerOffset,
+        _controller.shapeLayerSizeFactor);
+    _state.focalLatLngAnimationController.duration = _getFlingAnimationDuration(
+        details.velocity.pixelsPerSecond.distance, _frictionCoefficient);
+    _controller.isInInteractive = false;
+    _panDistanceBeforeFlinging = _controller.panDistance;
+    _zoomPanBehavior!.focalLatLng = latLng;
+  }
+
   void _startFlingAnimationForPinching(ScaleEndDetails details) {
     _isFlingAnimationActive = true;
     final int direction =
-        _controller.localScale >= _maximumReachedScaleOnInteraction ? 1 : -1;
+    _controller.localScale >= _maximumReachedScaleOnInteraction ? 1 : -1;
     double newZoomLevel = _currentZoomLevel +
         (direction *
             (details.velocity.pixelsPerSecond.distance / kMaxFlingVelocity) *
@@ -2703,7 +2820,7 @@ class _RenderGeoJSONLayer extends RenderStack
   Duration _getFlingAnimationDuration(
       double distance, double frictionCoefficient) {
     final int duration =
-        (log(10.0 / distance) / log(frictionCoefficient / 100)).round();
+    (log(10.0 / distance) / log(frictionCoefficient / 100)).round();
     final int durationInMs = (duration * 650).round();
     return Duration(milliseconds: durationInMs < 350 ? 350 : durationInMs);
   }
@@ -2746,7 +2863,7 @@ class _RenderGeoJSONLayer extends RenderStack
     final double newZoomLevel = _getZoomLevel(scale);
     final double newShapeLayerSizeFactor = _getScale(newZoomLevel);
     final Offset newShapeLayerOffset =
-        _controller.getZoomingTranslation(origin: localFocalPoint);
+    _controller.getZoomingTranslation(origin: localFocalPoint);
     final Rect newVisibleBounds = _controller.getVisibleBounds(
         newShapeLayerOffset, newShapeLayerSizeFactor);
     _zoomDetails = MapZoomDetails(
@@ -2800,9 +2917,13 @@ class _RenderGeoJSONLayer extends RenderStack
       _currentZoomLevel = zoomLevel;
       markNeedsPaint();
     } else if (_zoomPanBehavior!.zoomLevel != _currentZoomLevel) {
+      if (_state.focalLatLngAnimationController.isAnimating) {
+        _isAnimationOnQueue = true;
+        return;
+      }
       if (!_isFlingAnimationActive && !_doubleTapEnabled) {
         _state.zoomLevelAnimationController.duration =
-            const Duration(milliseconds: 650);
+        const Duration(milliseconds: 650);
       }
       _zoomLevelTween.begin = _currentZoomLevel;
       _zoomLevelTween.end = _zoomPanBehavior!.zoomLevel;
@@ -2839,6 +2960,10 @@ class _RenderGeoJSONLayer extends RenderStack
   void _handleZoomLevelAnimationStatusChange(AnimationStatus status) {
     if (status == AnimationStatus.completed && _zoomLevelTween.end != null) {
       _handleZoomingAnimationEnd();
+      if (_isAnimationOnQueue) {
+        _isAnimationOnQueue = false;
+        _handleFocalLatLngChange(_zoomPanBehavior!.focalLatLng);
+      }
     }
   }
 
@@ -2865,7 +2990,7 @@ class _RenderGeoJSONLayer extends RenderStack
       _controller.shapeLayerOffset =
           _controller.getZoomingTranslation() + _controller.normalize;
       _controller.shapeLayerOrigin = _controller.getZoomingTranslation(
-              previousOrigin: _controller.shapeLayerOrigin) +
+          previousOrigin: _controller.shapeLayerOrigin) +
           _controller.normalize;
       _controller.shapeLayerSizeFactor *= _controller.localScale;
       _updateMapDataSourceForVisual();
@@ -2884,7 +3009,7 @@ class _RenderGeoJSONLayer extends RenderStack
       [bool canAvoidPanUpdate = false]) {
     _avoidPanUpdate = canAvoidPanUpdate;
     final Offset delta =
-        _getValidPanDelta(localFocalPoint - previousFocalPoint);
+    _getValidPanDelta(localFocalPoint - previousFocalPoint);
     final Rect visibleBounds = _controller.getVisibleBounds(
         _controller.shapeLayerOffset +
             (canAvoidPanUpdate ? Offset.zero : delta));
@@ -2931,9 +3056,13 @@ class _RenderGeoJSONLayer extends RenderStack
   void _handleFocalLatLngChange(MapLatLng? latlng) {
     if (!_controller.isInInteractive ||
         _controller.visibleFocalLatLng != _zoomPanBehavior!.focalLatLng) {
+      if (_state.zoomLevelAnimationController.isAnimating) {
+        _isAnimationOnQueue = true;
+        return;
+      }
       if (!_isFlingAnimationActive) {
         _state.focalLatLngAnimationController.duration =
-            const Duration(milliseconds: 650);
+        const Duration(milliseconds: 650);
       }
 
       if (_state.focalLatLngAnimationController.isAnimating) {
@@ -2980,6 +3109,10 @@ class _RenderGeoJSONLayer extends RenderStack
   void _handleFocalLatLngAnimationStatusChange(AnimationStatus status) {
     if (status == AnimationStatus.completed && _focalLatLngTween.end != null) {
       _handleFocalLatLngAnimationEnd();
+      if (_isAnimationOnQueue) {
+        _isAnimationOnQueue = false;
+        _handleZoomLevelChange(_zoomPanBehavior!.zoomLevel);
+      }
     }
   }
 
@@ -3029,19 +3162,46 @@ class _RenderGeoJSONLayer extends RenderStack
 
   void _handleFlingAnimations() {
     if (_state.zoomLevelAnimationController.isAnimating && !_doubleTapEnabled) {
-      _state.zoomLevelAnimationController.stop();
-      _isZoomedUsingToolbar = false;
-      _handleZoomingAnimationEnd();
+      _cancelZoomingAnimation();
     }
     if (_state.focalLatLngAnimationController.isAnimating) {
-      _state.focalLatLngAnimationController.stop();
-      _handleFocalLatLngAnimationEnd();
+      _cancelFocalLatLngAnimation();
+    }
+  }
+
+  void _cancelZoomingAnimation() {
+    _state.zoomLevelAnimationController.stop();
+    _isZoomedUsingToolbar = false;
+    _handleZoomingAnimationEnd();
+    if (_isAnimationOnQueue) {
+      _isAnimationOnQueue = false;
+      _zoomPanBehavior!.focalLatLng = _controller.visibleFocalLatLng;
+    }
+  }
+
+  void _cancelFocalLatLngAnimation() {
+    _state.focalLatLngAnimationController.stop();
+    _handleFocalLatLngAnimationEnd();
+    if (_isAnimationOnQueue) {
+      _isAnimationOnQueue = false;
+      _zoomPanBehavior!.zoomLevel = _currentZoomLevel;
     }
   }
 
   void _handleRefresh() {
     if (_state.isSublayer) {
       _refresh();
+    }
+  }
+
+  void _handleZoomPanChange() {
+    if (_state.isSublayer) {
+      if (_state._controller!.localScale == 1.0 &&
+          _state._controller!.panDistance == Offset.zero) {
+        _refresh();
+      } else {
+        markNeedsPaint();
+      }
     }
   }
 
@@ -3080,7 +3240,7 @@ class _RenderGeoJSONLayer extends RenderStack
       }
 
       _state.zoomLevelAnimationController.duration =
-          const Duration(milliseconds: 200);
+      const Duration(milliseconds: 200);
       _doubleTapEnabled = true;
       // Based on the isInInteractive value we have updated the maps at
       // _handleZooming(). To avoid this at double tap zooming, we have reset
@@ -3107,7 +3267,7 @@ class _RenderGeoJSONLayer extends RenderStack
     _performChildHover(localPosition);
     if (_legend != null && _legend!.showPointerOnHover) {
       if ((_currentInteractedElement == MapLayerElement.bubble &&
-              _legend!.source == MapElement.bubble) ||
+          _legend!.source == MapElement.bubble) ||
           (_currentInteractedElement == MapLayerElement.shape &&
               _legend!.source == MapElement.shape)) {
         _state._updateLegendPointer(
@@ -3124,9 +3284,9 @@ class _RenderGeoJSONLayer extends RenderStack
           _state.bubbleKey.currentContext != null &&
           hasBubbleHoverColor) {
         final ShapeLayerChildRenderBoxBase bubbleRenderObject =
-            _state.bubbleKey.currentContext!.findRenderObject()!
-                // ignore: avoid_as
-                as ShapeLayerChildRenderBoxBase;
+        _state.bubbleKey.currentContext!.findRenderObject()!
+        // ignore: avoid_as
+        as ShapeLayerChildRenderBoxBase;
         bubbleRenderObject.onExit();
       }
 
@@ -3142,13 +3302,13 @@ class _RenderGeoJSONLayer extends RenderStack
       // [_handleExit] method in desktop. To hide the previous rendered tooltip,
       // we had passed the null value for model.
       if ((_state.widget.shapeTooltipBuilder != null ||
-              _state.widget.bubbleTooltipBuilder != null) &&
+          _state.widget.bubbleTooltipBuilder != null) &&
           _controller.tooltipKey != null &&
           _controller.tooltipKey!.currentContext != null) {
         final ShapeLayerChildRenderBoxBase tooltipRenderObject =
-            _controller.tooltipKey!.currentContext!.findRenderObject()!
-                // ignore: avoid_as
-                as ShapeLayerChildRenderBoxBase;
+        _controller.tooltipKey!.currentContext!.findRenderObject()!
+        // ignore: avoid_as
+        as ShapeLayerChildRenderBoxBase;
         tooltipRenderObject.hideTooltip();
       }
 
@@ -3163,7 +3323,7 @@ class _RenderGeoJSONLayer extends RenderStack
       if (_downLocalPoint != null) {
         final Offset distance = point - _downLocalPoint!;
         return distance.dx.abs() > _minPanDistance ||
-                distance.dy.abs() > _minPanDistance
+            distance.dy.abs() > _minPanDistance
             ? Gesture.pan
             : null;
       }
@@ -3262,7 +3422,7 @@ class _RenderGeoJSONLayer extends RenderStack
           _currentInteractedItem = mapModel;
         }
       } else if (_isShapeContains(
-              position, mapModel, _currentInteractedElement) &&
+          position, mapModel, _currentInteractedElement) &&
           !(wasToggled && _state.widget.legend!.source == MapElement.shape)) {
         _currentInteractedItem = mapModel;
         _currentInteractedElement = MapLayerElement.shape;
@@ -3278,7 +3438,7 @@ class _RenderGeoJSONLayer extends RenderStack
 
   bool _isBubbleContains(Offset position, MapModel mapModel) {
     return (_state.widget.bubbleTooltipBuilder != null ||
-            hasBubbleHoverColor) &&
+        hasBubbleHoverColor) &&
         mapModel.bubblePath != null &&
         mapModel.bubblePath!.contains(position);
   }
@@ -3286,8 +3446,8 @@ class _RenderGeoJSONLayer extends RenderStack
   bool _isShapeContains(
       Offset position, MapModel mapModel, MapLayerElement? element) {
     return (_state.widget.onSelectionChanged != null ||
-            _state.widget.shapeTooltipBuilder != null ||
-            hasShapeHoverColor) &&
+        _state.widget.shapeTooltipBuilder != null ||
+        hasShapeHoverColor) &&
         element != MapLayerElement.bubble &&
         mapModel.shapePath!.contains(position);
   }
@@ -3302,9 +3462,9 @@ class _RenderGeoJSONLayer extends RenderStack
     if (_state.widget.source.bubbleSizeMapper != null &&
         _state.bubbleKey.currentContext != null) {
       final ShapeLayerChildRenderBoxBase bubbleRenderObject =
-          _state.bubbleKey.currentContext!.findRenderObject()!
-              // ignore: avoid_as
-              as ShapeLayerChildRenderBoxBase;
+      _state.bubbleKey.currentContext!.findRenderObject()!
+      // ignore: avoid_as
+      as ShapeLayerChildRenderBoxBase;
       bubbleRenderObject.onHover(
           currentInteractedItem, _currentInteractedElement);
     }
@@ -3318,7 +3478,7 @@ class _RenderGeoJSONLayer extends RenderStack
         _currentHoverItem = _currentInteractedItem;
         _updateHoverItemTween();
       } else if ((_currentHoverItem != null &&
-              _currentHoverItem != _currentInteractedItem) ||
+          _currentHoverItem != _currentInteractedItem) ||
           (_currentInteractedElement == MapLayerElement.bubble &&
               _currentHoverItem == _currentInteractedItem)) {
         _previousHoverItem = _currentHoverItem;
@@ -3338,18 +3498,18 @@ class _RenderGeoJSONLayer extends RenderStack
 
   void _invokeTooltip(
       {MapModel? model,
-      Offset? position,
-      MapLayerElement? element,
-      PointerKind kind = PointerKind.touch}) {
+        Offset? position,
+        MapLayerElement? element,
+        PointerKind kind = PointerKind.touch}) {
     if ((_state.widget.shapeTooltipBuilder != null ||
-            _state.widget.bubbleTooltipBuilder != null) &&
+        _state.widget.bubbleTooltipBuilder != null) &&
         _controller.tooltipKey != null &&
         _controller.tooltipKey!.currentContext != null) {
       Rect? elementRect;
       final ShapeLayerChildRenderBoxBase tooltipRenderObject =
-          _controller.tooltipKey!.currentContext!.findRenderObject()!
-              // ignore: avoid_as
-              as ShapeLayerChildRenderBoxBase;
+      _controller.tooltipKey!.currentContext!.findRenderObject()!
+      // ignore: avoid_as
+      as ShapeLayerChildRenderBoxBase;
       if (model != null && element == MapLayerElement.bubble) {
         elementRect = Rect.fromCircle(
             center: model.shapePathCenter!, radius: model.bubbleRadius!);
@@ -3378,7 +3538,7 @@ class _RenderGeoJSONLayer extends RenderStack
       _currentSelectedItem = null;
     } else {
       _currentSelectedItem = _mapDataSource.values.firstWhere(
-          (MapModel element) => element.dataIndex == _selectedIndex);
+              (MapModel element) => element.dataIndex == _selectedIndex);
       _currentSelectedItem!.isSelected = !_currentSelectedItem!.isSelected;
       if (_prevSelectedItem != null) {
         _prevSelectedItem!.isSelected = false;
@@ -3409,7 +3569,7 @@ class _RenderGeoJSONLayer extends RenderStack
       }
 
       final Color shapeColor = (_currentSelectedItem != null &&
-              _currentSelectedItem!.actualIndex == model.actualIndex)
+          _currentSelectedItem!.actualIndex == model.actualIndex)
           ? _themeData.selectionColor
           : getActualShapeColor(model);
       _forwardToggledShapeColorTween.begin = shapeColor;
@@ -3431,7 +3591,9 @@ class _RenderGeoJSONLayer extends RenderStack
       ..addPanningListener(_handlePanning)
       ..addResetListener(_handleReset);
     if (_state.isSublayer) {
-      _controller.addRefreshListener(_handleRefresh);
+      _controller
+        .addRefreshListener(_handleRefresh);
+        // ..addZoomPanListener(_handleZoomPanChange);
     } else {
       _controller.addToggleListener(_handleToggleChange);
 
@@ -3459,7 +3621,9 @@ class _RenderGeoJSONLayer extends RenderStack
       ..removePanningListener(_handlePanning)
       ..removeResetListener(_handleReset);
     if (_state.isSublayer) {
-      _controller.removeRefreshListener(_handleRefresh);
+      _controller
+        .removeRefreshListener(_handleRefresh);
+        // ..removeZoomPanListener(_handleZoomPanChange);
     } else {
       _controller.removeToggleListener(_handleToggleChange);
 
@@ -3495,6 +3659,7 @@ class _RenderGeoJSONLayer extends RenderStack
 
       if (canZoom) {
         _scaleGestureRecognizer.addPointer(event);
+        _verticalGestureRecognizer.addPointer(event);
         if (_zoomPanBehavior!.enableDoubleTapZooming) {
           _doubleTapTimer ??= Timer(kDoubleTapTimeout, _resetDoubleTapTimer);
         }
@@ -3533,8 +3698,8 @@ class _RenderGeoJSONLayer extends RenderStack
     RenderBox? child = firstChild;
     while (child != null) {
       final StackParentData childParentData =
-          // ignore: avoid_as
-          child.parentData! as StackParentData;
+      // ignore: avoid_as
+      child.parentData! as StackParentData;
       child.layout(looseConstraints);
       child = childParentData.nextSibling;
     }
@@ -3570,7 +3735,7 @@ class _RenderGeoJSONLayer extends RenderStack
 
         if (hasPrevSelectedItem && _prevSelectedItem!.primaryKey == key) {
           fillPaint.color =
-              _reverseSelectionColorTween.evaluate(_selectionColorAnimation)!;
+          _reverseSelectionColorTween.evaluate(_selectionColorAnimation)!;
           strokePaint
             ..color = _reverseSelectionStrokeColorTween
                 .evaluate(_selectionColorAnimation)!
@@ -3580,14 +3745,15 @@ class _RenderGeoJSONLayer extends RenderStack
             !_controller.wasToggled(_previousHoverItem!) &&
             _previousHoverItem != _currentHoverItem) {
           fillPaint.color = _themeData.shapeHoverColor != Colors.transparent
-              ? _reverseHoverColorTween.evaluate(_hoverColorAnimation)!
+              ? (_reverseHoverColorTween.evaluate(_hoverColorAnimation) ??
+              getActualShapeColor(model))
               : getActualShapeColor(model);
 
           if (_themeData.shapeHoverStrokeWidth! > 0.0 &&
               _themeData.shapeHoverStrokeColor != Colors.transparent) {
             strokePaint
               ..color =
-                  _reverseHoverStrokeColorTween.evaluate(_hoverColorAnimation)!
+              _reverseHoverStrokeColorTween.evaluate(_hoverColorAnimation)!
               ..strokeWidth = _themeData.layerStrokeWidth;
           } else {
             strokePaint
@@ -3652,9 +3818,9 @@ class _RenderGeoJSONLayer extends RenderStack
       if (_controller.currentToggledItemIndex == model.legendMapperIndex) {
         final Color? shapeStrokeColor = _controller.wasToggled(model)
             ? _forwardToggledShapeStrokeColorTween
-                .evaluate(_toggleShapeAnimation)
+            .evaluate(_toggleShapeAnimation)
             : _reverseToggledShapeStrokeColorTween
-                .evaluate(_toggleShapeAnimation);
+            .evaluate(_toggleShapeAnimation);
         // Set tween color to the shape stroke based on the currently
         // tapped legend item. If the legend item is toggled, then the
         // [_forwardToggledShapeStrokeColorTween] return. If the legend item is
@@ -3688,7 +3854,7 @@ class _RenderGeoJSONLayer extends RenderStack
 
   double _getIntrinsicStrokeWidth(double strokeWidth) {
     return strokeWidth /=
-        _controller.gesture == Gesture.scale ? _controller.localScale : 1;
+    _controller.gesture == Gesture.scale ? _controller.localScale : 1;
   }
 
   void _drawSelectedShape(
@@ -3696,14 +3862,14 @@ class _RenderGeoJSONLayer extends RenderStack
     if (_currentSelectedItem != null &&
         !_controller.wasToggled(_currentSelectedItem!)) {
       fillPaint.color =
-          _forwardSelectionColorTween!.evaluate(_selectionColorAnimation)!;
+      _forwardSelectionColorTween!.evaluate(_selectionColorAnimation)!;
       context.canvas.drawPath(_currentSelectedItem!.shapePath!, fillPaint);
       if (_themeData.selectionStrokeWidth > 0.0) {
         strokePaint
           ..color = _forwardSelectionStrokeColorTween
               .evaluate(_selectionColorAnimation)!
           ..strokeWidth =
-              _getIntrinsicStrokeWidth(_themeData.selectionStrokeWidth);
+          _getIntrinsicStrokeWidth(_themeData.selectionStrokeWidth);
         context.canvas.drawPath(_currentSelectedItem!.shapePath!, strokePaint);
       }
     }
@@ -3720,9 +3886,9 @@ class _RenderGeoJSONLayer extends RenderStack
           _themeData.shapeHoverStrokeColor != Colors.transparent) {
         strokePaint
           ..color =
-              _forwardHoverStrokeColorTween.evaluate(_hoverColorAnimation)!
+          _forwardHoverStrokeColorTween.evaluate(_hoverColorAnimation)!
           ..strokeWidth =
-              _getIntrinsicStrokeWidth(_themeData.shapeHoverStrokeWidth!);
+          _getIntrinsicStrokeWidth(_themeData.shapeHoverStrokeWidth!);
       } else {
         strokePaint
           ..color = _themeData.layerStrokeColor
