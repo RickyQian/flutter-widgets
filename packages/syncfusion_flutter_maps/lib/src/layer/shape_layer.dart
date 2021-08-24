@@ -1469,7 +1469,6 @@ class _GeoJSONLayerState extends State<GeoJSONLayer>
               model.reset();
             }
             _bindMapsSourceIntoDataSource();
-            _shouldUpdateMapDataSource = false;
           }
           return _shapeLayerWithLegend;
         } else {
